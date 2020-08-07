@@ -1,0 +1,179 @@
+//動いたところを塗る
+
+//変数
+//p1のX座標
+where1X = 600
+//p1のY座標
+where1Y = 400
+//p2のX座標
+where2X = 10
+//p2のY座標
+where2Y = 10
+
+
+//loop
+*loop1
+	goto *returnR
+*loop2
+	goto *returnL
+*loop3
+	goto *returnU
+*loop4
+	goto *returnD
+*loop5
+	goto *returnR2
+*loop6
+	goto *returnL2
+*loop7
+	goto *returnU2
+*loop8
+	goto *returnD2
+	wait 1
+goto *loop1
+stop
+
+////PLAYER1////
+
+//p1の右
+*returnR
+	getkey clickR,39  
+	if clickR = 1 : goto *clickingR
+	wait 1
+    goto *loop2
+	
+*clickingR
+	wait 2
+	where1X = where1X + 1
+	goto *loops
+
+//p1の左
+*returnL
+	getkey clickL,37
+	if clickL = 1 : goto *clickingL
+	wait 1
+	goto *loop3
+
+*clickingL
+	wait 8
+	where1X = where1X - 1
+	goto *loops
+
+//p1の上
+*returnU
+	getkey clickU,38
+	if clickU = 1 : goto *clickingU
+	//button "aaa" , *clickingU
+	wait 1
+	goto *loop4
+	
+*clickingU
+	wait 5
+	where1Y = where1Y - 1
+    goto *loops
+
+//p1の下
+*returnD
+	getkey clickD,40  
+	if clickD = 1 : goto *clickingD
+	wait 1
+	goto *loop5
+
+*clickingD
+	wait 2
+	where1Y = where1Y + 1
+	goto *loops
+stop
+
+//p1の表示
+*loops
+where1XX = where1X + 10
+where1YY = where1Y + 10
+
+color 255,0,0
+boxf where1X , where1Y , where1XX , where1YY
+
+if clickR = 1{
+	goto *loop2
+}else : clickL = 1{
+	goto *loop3
+}else : clickU = 1{
+	goto *loop4
+}else : clickD = 1{
+	goto *loop1
+}
+
+stop
+
+////PLAYER2////
+
+//p2の右
+*returnR2
+	getkey clickR,68
+	if clickR = 1 : goto *clickingR2
+	wait 1
+    goto *loop6
+	
+*clickingR2
+	wait 2
+	where2X = where2X + 1
+	goto *loop2s
+
+//p2の左
+*returnL2
+	getkey clickL,65
+	if clickL = 1 : goto *clickingL2
+	wait 1
+	goto *loop7
+
+*clickingL2
+	wait 8
+	where2X = where2X - 1
+	goto *loop2s
+
+//p2の上
+*returnU2
+	getkey clickU,87
+	if clickU = 1 : goto *clickingU2
+	//button "aaa" , *clickingU
+	wait 1
+	goto *loop8
+	
+*clickingU2
+	wait 5
+	where2Y = where2Y - 1
+    goto *loop2s
+
+//p2の下
+*returnD2
+	getkey clickD,83
+	if clickD = 1 : goto *clickingD2
+	wait 1
+	goto *loop1
+
+*clickingD2
+	wait 2
+	where2Y = where2Y + 1
+	goto *loop2s
+stop
+
+//p2の表示
+*loop2s
+where2XX = where2X + 10
+where2YY = where2Y + 10
+
+color 100,100,100
+boxf where2X , where2Y , where2XX , where2YY
+
+if clickR = 1{
+	goto *loop6
+}else : clickL2 = 1{
+	goto *loop7
+}else : clickU2 = 1{
+	goto *loop8
+}else : clickD2 = 1{
+	goto *loop1
+}
+
+stop
+
+
